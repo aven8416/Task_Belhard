@@ -27,7 +27,9 @@
                 </form>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="#">Link</a></li>
+                    @if(Auth::user())
                     <li><a href="{{route('logout')}}">Logout</a></li>
+                        @endif
                 </ul>
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->

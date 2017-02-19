@@ -10,7 +10,10 @@
 
                     <textarea class="form-control" name="text" id="new-comment" cols ="30" rows="10" placeholder="Your comment"></textarea>
                 </div>
-                in
+                <div class="form-group ">
+                    <label for="tag">Additional tags</label>
+                    <input class="form-control" type="text" name="tag" id="tag" value="" placeholder="Add tags to describe your comment">
+                </div>
                 <button type="submit" class="btn btn-primary">Create Comment</button>
                 <input type="hidden" name="_token" value="{{Session::token()}}">
                 </form>
@@ -28,19 +31,20 @@
                     Posted by {{$comment->user->first_name}} on {{$comment->created_at}}
                 </div>
                 <div class="interaction">
-                    <a href="#">Like</a>
-                    <a href="#">Dislike</a>
+
 
                     @if(Auth::user()==$comment->user)
                         <a href="#">Edit</a>
                         <a href="{{route('commentdelete',['comment_id'=>$comment->id])}}">Delete</a>
+                        @foreach($tags as $tag)
+                        <a href="#">{{$tag->tag}}</a>
+                        @endforeach
                         @endif
 
                     </div>
-                <div class="info">
-                    <a href="#">#tag</a>
-                    </div>
-                </article>
+
+
+            </article>
             @endforeach
 
             </div>
