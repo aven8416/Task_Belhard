@@ -22,7 +22,7 @@ Route::group (['middleware' =>['web']], function (){
 
     ]);
     Route::get('/dashboard', [
-        'uses' => 'UserController@getDashboard',
+        'uses' => 'CommentController@getDashboard',
         'as' => 'dashboard',
         'middleware' => 'auth'
 
@@ -34,5 +34,28 @@ Route::group (['middleware' =>['web']], function (){
         'as' => 'signin'
 
     ]);
+
+    Route::post('/createcomment', [
+        'uses' => 'CommentController@postCreateComment',
+        'as' => 'createcomment',
+        'middleware' => 'auth'
+
+    ]);
+    Route::get('/comment-delete/{comment_id}', [
+        'uses' => 'CommentController@deleteComment',
+        'as' => 'commentdelete',
+        'middleware' => 'auth'
+
+    ]);
+
+    Route::get('/logout', [
+        'uses' => 'UserController@getLogout',
+        'as' => 'logout',
+
+
+    ]);
+
+
+
 
 });

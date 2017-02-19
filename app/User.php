@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class User extends Model implements Authenticatable
 {
     use \Illuminate\Auth\Authenticatable;
+
+    public function comments() {
+
+        return $this->hasMany('App\Comment');
+
+    }
+
+
 }
